@@ -1,0 +1,70 @@
+--Artisan Commands
+--install laravel into drectory
+composer create-project laravel/laravel quickstart --prefer-dist
+
+--migration scripts for table 
+php artisan make:migration create_tasks_table --create=tasks
+php artisan make:migration create_payments_table --create=payments
+
+php artisan migrate
+
+php artisan make:model Member
+php artisan make:model Payment
+php artisan make:model Concession
+
+php artisan make:controller HomeController
+php artisan make:controller MemberController
+php artisan make:controller PaymentController
+php artisan make:controller ConcessionController
+-------------------------------------------------------------------------------------------------------------------------
+
+Route::get('greeting', function () {
+    return view('welcome', ['name' => 'Samantha']);
+});
+
+You may display the contents of the name variable like so:
+
+Hello, {{ $name }}.
+
+
+---------------Installling A MongoDB based Eloquent model and Query builder for Laravel (Moloquent) 
+---------------Reference: http://haafiz.me/development/using-laravel-with-mongodb
+===============Reference: https://github.com/jenssegers/laravel-mongodb
+
+
+---------------Installation using composer:
+composer require jenssegers/mongodb
+
+---------------In config/app.php :
+Jenssegers\Mongodb\MongodbServiceProvider::class,
+
+-------------And add in same file, add below line in aliases array:
+'Moloquent' => 'Jenssegers\Mongodb\Model',
+
+Configuration
+
+------------Change your default database connection name in app/config/database.php:
+
+'default' => env('DB_CONNECTION', 'mongodb'),
+
+-----------------And add a new mongodb connection:
+
+'mongodb' => [
+    'driver'   => 'mongodb',
+    'host'     => env('DB_HOST', 'localhost'),
+    'port'     => env('DB_PORT', 27017),
+    'database' => env('DB_DATABASE'),
+    'username' => env('DB_USERNAME'),
+    'password' => env('DB_PASSWORD'),
+    'options' => [
+        'database' => 'admin' // sets the authentication database required by mongo 3
+    ]
+],
+
+---------------Extending Models from Moloquent---------------------------------
+use Jenssegers\Mongodb\Eloquent\Model as Moloquent;
+
+class User extends Moloquent 
+{
+	
+}
