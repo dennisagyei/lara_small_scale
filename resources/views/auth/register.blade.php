@@ -22,7 +22,7 @@
                         </div>
                 @endif
                 
-                <form class="form-horizontal m-t-40" method="POST" action="{{ url('/register') }}">
+                <form class="form-horizontal m-t-40" method="POST" action="{{ url('/auth/register') }}">
                         {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -41,7 +41,7 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
                             <div class="col-xs-12">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail Address">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-mail">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -84,7 +84,7 @@
 
                     <div class="form-group m-t-30">
                         <div class="col-sm-12 text-center">
-                            <a href="{{ url('/login') }}">Already have account?</a>
+                            <a href="{{ url('/auth/login') }}">Already have account?</a>
                         </div>
                     </div>
 

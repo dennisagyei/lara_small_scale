@@ -103,7 +103,7 @@
                         <ul class="list-unstyled">
                             <li><a href="#">User-list</a></li>
                             <li><a href="{{ url('/register')}}">Register User</a></li>
-                            <li><a href="{{ url('/profile')}}">My Profile</a></li>
+                            <li><a href="{{ url('/user/profile')}}">My Profile</a></li>
 
                         </ul>
                     </li>
@@ -213,12 +213,12 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown text-center">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img alt="" src="/img/avatar-2.jpg" class="img-circle profile-img thumb-sm">
-                            <span class="username">John Deo </span> <span class="caret"></span>
+                            <img alt="" src="/img/user.png" class="img-circle profile-img thumb-sm">
+                            <span class="username">{{ Auth::check() ? Auth::user()->name : 'Account'}} </span> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
-                            <li><a href="{{ url('profile') }}"><i class="fa fa-briefcase"></i>Profile</a></li>
-                            <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                            <li><a href="{{ url('/user/profile') }}"><i class="fa fa-briefcase"></i>Profile</a></li>
+                            <li><a href="{{Auth::check() ? url('/auth/logout') : url('/auth/login')}}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->       

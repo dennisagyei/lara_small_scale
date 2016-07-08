@@ -11,35 +11,34 @@
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
 
-    Route::get('/home', 'HomeController@index');
-});
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-/*Route::auth();
-// Authentication Routes...
-Route::get('login', 'Auth\AuthController@showLoginForm');
-Route::post('login', 'Auth\AuthController@login');
-Route::get('logout', 'Auth\AuthController@logout');
+// Authentication routes...
+Route::get('/auth/login', 'AccessController@login');
+Route::post('/auth/login', 'AccessController@authenticate');
+Route::get('/auth/logout', 'AccessController@logout');
 
-// Registration Routes...
-Route::get('register', 'Auth\AuthController@showRegistrationForm');
-Route::post('register', 'Auth\AuthController@register');
+// Registration routes...
+Route::post('/auth/register', 'AccessController@register');
+Route::get('/auth/register', 'AccessController@showRegister');
 
 // Password Reset Routes...
 Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Auth\PasswordController@reset');
 
+//Profile Routes
+Route::get('/user/profile','ProfileController@show');
+Route::patch('/user/profile','ProfileController@update');
+
 //Dashboard routes
 Route::get('/home', 'HomeController@index');
 
-*/
 
 
 Route::get('/members', 'MemberController@index');
@@ -70,4 +69,3 @@ Route::post('/concessions/save', 'ConcessionController@store');
 
 Route::get('/sms',function(){return view('sms');});
 Route::get('/email',function(){return view('email');});
-Route::get('/profile',function(){return view('profile');});

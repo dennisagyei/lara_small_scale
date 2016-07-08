@@ -13,6 +13,8 @@ php artisan make:model Payment
 php artisan make:model Concession
 
 php artisan make:controller HomeController
+php artisan make:controller AccessController
+php artisan make:controller ProfileController
 php artisan make:controller MemberController
 php artisan make:controller PaymentController
 php artisan make:controller ConcessionController

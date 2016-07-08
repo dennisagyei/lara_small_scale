@@ -22,7 +22,7 @@ Login
                             </ul>
                         </div>
                 @endif
-                <form class="form-horizontal m-t-40" method="POST" action="{{ url('/login') }}">
+                <form class="form-horizontal m-t-40" method="POST" action="{{ url('auth/login') }}">
                         {{ csrf_field() }}
                                        
                     <div class="form-group ">
@@ -54,10 +54,10 @@ Login
                     </div>
                     <div class="form-group m-t-30">
                         <div class="col-sm-7">
-                            <a href="{{ url('/reset') }}"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+                            <a href="{{ url('/password/reset') }}"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
                         </div>
                         <div class="col-sm-5 text-right">
-                            <a href="{{ url('/register') }}">Create an account</a>
+                            <a href="{{ url('/auth/register') }}">Create an account</a>
                         </div>
                     </div>
                 </form>

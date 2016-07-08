@@ -11,6 +11,12 @@ use App\Member;
 class MemberController extends Controller
 {
     //
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
     	$members=Member::all();
