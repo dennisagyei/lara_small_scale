@@ -945,7 +945,7 @@
         <div class="mailing-list">
           <h3 class="mailing-list-heading">MIS PORTAL</h3>
           <div class="row">
-            <a href="{{ url('/login') }}" class="btn btn-danger"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login </a>          
+            <a href="{{ url('/auth/login') }}" class="btn btn-danger"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login </a>          
           </div>
         </div>
       </div>

@@ -95,8 +95,8 @@
                     
                     <li class="has-submenu"><a href="#"><i class="fa fa-bell"></i> <span class="nav-label">Notification</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/email')}}"> Email</a></li>
-                            <li><a href="{{ url('/sms')}}"> SMS</a></li>
+                            <li><a href="{{ url('/notifications/email')}}"> Email</a></li>
+                            <li><a href="{{ url('/notifications/sms')}}"> SMS</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span></a>

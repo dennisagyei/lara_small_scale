@@ -1,20 +1,20 @@
 @extends('layouts.master')
 
 
-@section('title', 'Payments')
+@section('title', 'Email Notifications')
 
 @section('content')
 <div class="wraper container-fluid">
 
     <div class="page-title"> 
-        <h3 class="title"><i class="fa fa-envelope fa-lg"></i> Notifications>Email</h3> 
+        <h3 class="title"><i class="fa fa-envelope fa-lg"></i> Notifications/Email</h3> 
     </div>
 
     <div class="row">
 
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><button class="btn btn-inverse"><i class="fa fa-plus"></i> Create Email</button></div>
+                <div class="panel-heading"><a href="{{ url('/notifications/email/send') }}" class="btn btn-inverse"><i class="fa fa-plus"></i> Compose Email</a></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">

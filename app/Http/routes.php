@@ -16,6 +16,7 @@
 
 Route::get('/', function () {
     return view('welcome');
+    //return view('notifications.template1');
 });
 
 // Authentication routes...
@@ -67,5 +68,8 @@ Route::get('/concessions/confirm/{id}', 'ConcessionController@confirm');
 Route::get('/concessions/destroy/{id}', 'ConcessionController@destroy');
 Route::post('/concessions/save', 'ConcessionController@store');
 
-Route::get('/sms',function(){return view('sms');});
-Route::get('/email',function(){return view('email');});
+Route::get('/notifications/sms','NotificationController@showSms');
+Route::get('/notifications/email','NotificationController@showEmail');
+Route::get('/notifications/email/send','NotificationController@composeEmail');
+Route::patch('/notifications/email/send','NotificationController@updateEmail');
+Route::post('/notifications/email/send','NotificationController@sendEmail');
