@@ -30,13 +30,15 @@
                                     </thead>
 
                                     <tbody>
+                                        @foreach ($notifications as $notify)
                                         <tr>
-                                            <td class="text-center">2016-06-19</td>
-                                            <td>GNASSM</td>
-                                            <td>Welcome Message</td>
-                                            <td><span class="label label-success">pending</span></td>
+                                            <td class="text-center">{{ substr($notify->created_at,0,10) }}</td>
+                                            <td>{{ $notify->sender }}</td>
+                                            <td>{{ $notify->subject }}</td>
+                                            <td><span class="label label-success">{{ $notify->status }}</span></td>
                                             <td class="text-center"> <a href="#" class="btn btn-default btn-sm"><i class="fa fa-list-ul" aria-hidden="true"></i></a> </td>
                                         </tr>
+                                        @endforeach
                                         
                                     </tbody>
                                 </table>

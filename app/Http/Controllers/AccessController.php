@@ -27,13 +27,19 @@ class AccessController extends Controller
 
     public function authenticate(Request $request)
     {
+        $this->validate($request, [
+        'email' => 'required',
+        'password' => 'required',
+         ]);
+
     	if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) 
     	{
         	return redirect('/home');
    		} 
    		else 
    		{
-        	return view('auth.login');
+            
+        	return view('auth.login',['err_msg' => 'Invalid user or password!']);
     	}
     }
 

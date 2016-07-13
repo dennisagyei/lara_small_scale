@@ -59,10 +59,10 @@
                                         
                                     </div>
                                     <div class="form-group">
-                                        <input name="subject" type="text" class="form-control" placeholder="Subject">
+                                        <input name="subject" type="text" class="form-control" placeholder="Subject" required>
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" class="wysihtml5 form-control" placeholder="Message body" style="height: 200px"></textarea>
+                                        <textarea required name="message" class="wysihtml5 form-control" placeholder="Message body" style="height: 200px"></textarea>
                                     </div>
 
                                      <div class="pull-right">

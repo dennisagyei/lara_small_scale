@@ -14,7 +14,7 @@
 
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><button class="btn btn-inverse"><i class="fa fa-plus"></i> Create SMS</button></div>
+                <div class="panel-heading"><a href="/notifications/sms/send" class="btn btn-inverse"><i class="fa fa-plus"></i> Create SMS</a></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -30,13 +30,15 @@
                                     </thead>
 
                                     <tbody>
+                                        @foreach ($notifications as $notify)
                                         <tr>
-                                            <td class="text-center">2016-06-19</td>
-                                            <td>GNASSM</td>
-                                            <td>Welcome to ...</td>
-                                            <td><span class="label label-success">Pending</span></td>
+                                            <td class="text-center">{{ substr($notify->created_at,0,10) }}</td>
+                                            <td>{{ $notify->sender }}</td>
+                                            <td>{{ $notify->subject }}</td>
+                                            <td><span class="label label-success">{{ $notify->sender }}</span></td>
                                             <td class="text-center"> <a href="#" class="btn btn-default btn-sm"><i class="fa fa-list-ul" aria-hidden="true"></i></a> </td>
                                         </tr>
+                                        @endforeach
                                         
                                     </tbody>
                                 </table>

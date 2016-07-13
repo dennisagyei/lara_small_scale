@@ -68,7 +68,13 @@ Route::get('/concessions/confirm/{id}', 'ConcessionController@confirm');
 Route::get('/concessions/destroy/{id}', 'ConcessionController@destroy');
 Route::post('/concessions/save', 'ConcessionController@store');
 
+//SMS Notification routes
 Route::get('/notifications/sms','NotificationController@showSms');
+Route::get('/notifications/sms/send','NotificationController@composeSms');
+Route::patch('/notifications/sms/send','NotificationController@updateSms');
+Route::post('/notifications/sms/send','NotificationController@sendSms');
+
+//Email Notification routes
 Route::get('/notifications/email','NotificationController@showEmail');
 Route::get('/notifications/email/send','NotificationController@composeEmail');
 Route::patch('/notifications/email/send','NotificationController@updateEmail');

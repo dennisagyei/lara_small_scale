@@ -5,12 +5,14 @@ composer create-project laravel/laravel quickstart --prefer-dist
 --migration scripts for table 
 php artisan make:migration create_tasks_table --create=tasks
 php artisan make:migration create_payments_table --create=payments
+php artisan make:migration create_notifications_table --create=notifications
 
 php artisan migrate
 
 php artisan make:model Member
 php artisan make:model Payment
 php artisan make:model Concession
+php artisan make:model Notification
 
 php artisan make:controller HomeController
 php artisan make:controller AccessController
@@ -18,6 +20,7 @@ php artisan make:controller ProfileController
 php artisan make:controller MemberController
 php artisan make:controller PaymentController
 php artisan make:controller ConcessionController
+php artisan make:controller NotificationController
 -------------------------------------------------------------------------------------------------------------------------
 
 Route::get('greeting', function () {
@@ -70,3 +73,8 @@ class User extends Moloquent
 {
 	
 }
+
+
+-----------------------MyTxtBox API-----------------------------------------------
+Client Id   :   jphgfwqa
+Client Secret   :apskecby
