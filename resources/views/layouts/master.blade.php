@@ -101,8 +101,7 @@
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="#">User-list</a></li>
-                            <li><a href="{{ url('/register')}}">Register User</a></li>
+                            <li><a href="#">User Setup</a></li>
                             <li><a href="{{ url('/user/profile')}}">My Profile</a></li>
 
                         </ul>
