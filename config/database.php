@@ -80,7 +80,7 @@ return [
 
         'mongodb' => [
             'driver'   => 'mongodb',
-            'host'     => env('DB_HOST', 'localhost'),
+            'host'     => env('DB_HOST', 'dennisagyei-smallscale-3527567'),
             'port'     => env('DB_PORT', 27017),
             'database' => env('DB_DATABASE'),
             'username' => env('DB_USERNAME'),
