@@ -37,6 +37,17 @@ Route::post('password/reset', 'Auth\PasswordController@reset');
 Route::get('/user/profile','ProfileController@show');
 Route::patch('/user/profile','ProfileController@update');
 
+//User account setup
+Route::get('/users','AccessController@showUsers');
+Route::get('/users/add','AccessController@addUser');
+Route::post('/users/find','AccessController@findUsers');
+Route::get('/users/destroy/{id}','AccessController@destroy');
+Route::get('/users/disable/{id}','AccessController@disable');
+Route::get('/users/enable/{id}','AccessController@enable');
+Route::get('/users/edit/{id}','AccessController@edit');
+Route::patch('/users/update/{id}','AccessController@update');
+Route::post('/users/save','AccessController@storeUser');
+
 //Dashboard routes
 Route::get('/home', 'HomeController@index');
 

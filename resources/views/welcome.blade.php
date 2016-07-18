@@ -9,7 +9,7 @@
 
     <!-- Bootstrap and Font Awesome css-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <!-- Google fonts-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
@@ -964,8 +964,8 @@
     </div>
     <!-- JAVASCRIPT FILES -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="js/front.js"</script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/front.js"</script>
 
  
   </body>
