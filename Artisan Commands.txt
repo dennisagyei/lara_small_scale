@@ -13,6 +13,7 @@ php artisan make:model Member
 php artisan make:model Payment
 php artisan make:model Concession
 php artisan make:model Notification
+php artisan make:model Task
 
 php artisan make:controller HomeController
 php artisan make:controller AccessController
@@ -21,6 +22,8 @@ php artisan make:controller MemberController
 php artisan make:controller PaymentController
 php artisan make:controller ConcessionController
 php artisan make:controller NotificationController
+
+php artisan make:migration create_tasks_table --create=tasks
 -------------------------------------------------------------------------------------------------------------------------
 
 Route::get('greeting', function () {

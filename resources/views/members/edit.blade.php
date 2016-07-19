@@ -20,7 +20,7 @@
         <ol class="breadcrumb">
             <li><a href="{{ url('/home') }}">Home</a></li>
             <li><a href="{{ url('/members') }}">Members</a></li>
-            <li class="active">Edit Member</li>
+            <li class="active">Edit</li>
         </ol>
     </div>
 

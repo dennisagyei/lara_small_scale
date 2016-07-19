@@ -3,38 +3,47 @@
 @section('content')
 <div class="wraper container-fluid">
                 <div class="page-title"> 
-                    <h3 class="title">{{ date("l jS \of F Y h:i:s A") }}</h3> 
+                    <h3 class="title"><span id="timer"></span></h3> 
                 </div>
 
 
 
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
-                        <div class="widget-panel widget-style-2 white-bg">
-                            <i class="ion-eye text-pink"></i> 
-                            <h2 class="m-0 counter">50</h2>
-                            <div>New Members</div>
+                        <div class="mini-stat clearfix">
+                            <span class="mini-stat-icon bg-info"><i class="fa fa-users"></i></span>
+                            <div class="mini-stat-info text-right">
+                                <span class="counter">{{ $memberCount }}</span>
+                                Total Members
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
-                        <div class="widget-panel widget-style-2 white-bg">
-                            <i class="ion-wifi text-purple"></i> 
-                            <h2 class="m-0 counter">8956</h2>
-                            <div>Concessions</div>
+                        <div class="mini-stat clearfix">
+                            <span class="mini-stat-icon bg-warning"><i class="fa fa-building"></i></span>
+                            <div class="mini-stat-info text-right">
+                                <span class="counter">{{ $concessionCount }}</span>
+                                Concessions
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
-                        <div class="widget-panel widget-style-2 white-bg">
-                            <i class="ion-ios7-pricetag text-info"></i> 
-                            <h2 class="m-0 counter">1268</h2>
-                            <div>Total levies</div>
+                        <div class="mini-stat clearfix">
+                            <span class="mini-stat-icon bg-pink"><i class="fa fa-money"></i></span>
+                            <div class="mini-stat-info text-right">
+                                <span class="counter">{{ $Totalpayment }}</span>
+                                Total levies
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
-                        <div class="widget-panel widget-style-2 white-bg">
-                            <i class="ion-android-contacts text-success"></i> 
-                            <h2 class="m-0 counter">145</h2>
-                            <div>New Users</div>
+                        
+                        <div class="mini-stat clearfix">
+                            <span class="mini-stat-icon bg-success"><i class="fa fa-user"></i></span>
+                            <div class="mini-stat-info text-right">
+                                <span class="counter">{{ $userCount }}</span>
+                                New Users
+                            </div>
                         </div>
                     </div>
                 </div> <!-- end row -->
@@ -46,7 +55,7 @@
                         <div class="portlet" id="todo-container"><!-- /primary heading -->
                             <div class="portlet-heading">
                                 <h3 class="portlet-title text-dark text-uppercase">
-                                    Todo
+                                    Alerts & Actions
                                 </h3>
                                 <div class="portlet-widgets">
                                     <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
@@ -109,81 +118,27 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Project Name</th>
-                                                    <th>Start Date</th>
-                                                    <th>Due Date</th>
-                                                    <th>Status</th>
-                                                    <th>Assign</th>
+                                                    <th>Company Name</th>
+                                                    <th>Contact Person</th>
+                                                    <th>Phone</th>
+                                                    <th>Action</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $i = 0;?>
+                                                @foreach($members as $member)
+                                                    <?php $i++; ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>Velonic Admin v1</td>
-                                                    <td>01/01/2015</td>
-                                                    <td>26/04/2015</td>
-                                                    <td><span class="label label-info">Released</span></td>
-                                                    <td>Coderthemes</td>
+                                                    <td> {{ $i }}</td>
+                                                    <td>{{ $member->company }}</td>
+                                                    <td>{{ $member->contact_person }}</td>
+                                                    <td>{{ $member->contact_phone }}</td>
+                                                    <td> <a href="{{ url('/members/'.$member->_id.'/edit') }}"> <span class="label label-info">view</span> </a></td>
+                                                   
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Velonic Frontend v1</td>
-                                                    <td>01/01/2015</td>
-                                                    <td>26/04/2015</td>
-                                                    <td><span class="label label-success">Released</span></td>
-                                                    <td>Coderthemes</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Velonic Admin v1.1</td>
-                                                    <td>01/05/2015</td>
-                                                    <td>10/05/2015</td>
-                                                    <td><span class="label label-pink">Pending</span></td>
-                                                    <td>Coderthemes</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Velonic Frontend v1.1</td>
-                                                    <td>01/01/2015</td>
-                                                    <td>31/05/2015</td>
-                                                    <td><span class="label label-purple">Work in Progress</span></td>
-                                                    <td>Coderthemes</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Velonic Admin v1.3</td>
-                                                    <td>01/01/2015</td>
-                                                    <td>31/05/2015</td>
-                                                    <td><span class="label label-warning">Coming soon</span></td>
-                                                    <td>Coderthemes</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>Velonic Admin v1.3</td>
-                                                    <td>01/01/2015</td>
-                                                    <td>31/05/2015</td>
-                                                    <td><span class="label label-primary">Coming soon</span></td>
-                                                    <td>Coderthemes</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td>Velonic Admin v1.3</td>
-                                                    <td>01/01/2015</td>
-                                                    <td>31/05/2015</td>
-                                                    <td><span class="label label-info">Cool</span></td>
-                                                    <td>Coderthemes</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>8</td>
-                                                    <td>Velonic Admin v1.3</td>
-                                                    <td>01/01/2015</td>
-                                                    <td>31/05/2015</td>
-                                                    <td><span class="label label-warning">Coming soon</span></td>
-                                                    <td>Coderthemes</td>
-                                                </tr>
+                                                    
+                                                @endforeach
                                                 
                                             </tbody>
                                         </table>
@@ -198,4 +153,19 @@
 
 
             </div>
+@endsection
+
+@section('script')
+
+<script type="text/javascript">
+
+    function date_time() {
+      now = moment().format('LLLL');
+      document.getElementById('timer').innerHTML = now;
+      setTimeout(function () { date_time(); }, 1000);
+    }
+    
+    
+    date_time();
+</script>
 @endsection

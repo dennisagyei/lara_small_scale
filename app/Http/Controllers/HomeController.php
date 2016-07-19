@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\User;
+use App\Member;
+use App\Concession;
+use App\Payment;
+use App\Task;
 
 class HomeController extends Controller
 {
@@ -24,6 +29,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $userCount=User::count();
+        $memberCount=Member::count();
+        $concessionCount=Concession::count();
+        $Totalpayment=Payment::sum('amount');
+        $members=Member::orderBy('created_at', 'desc')->get();
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+        
+        return view('home',compact('userCount','memberCount','concessionCount','Totalpayment','members','tasks'));
     }
 }
