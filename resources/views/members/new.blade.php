@@ -147,9 +147,9 @@
                             <input type="date" name="oper_expiry_date" class="form-control" id="oper_expiry_date">
                         </div>
 
-                        <div class="pull-right">
-                            <a href="{{ url('/members') }}" class="btn btn-inverse">Cancel</a>
-                            <button type="submit" class="btn btn-inverse">Save</button> 
+                        <div>
+                        <a href="{{ url('/members') }}" class="btn btn-inverse pull-left"> Cancel</a>
+                        <button type="submit"  class="btn btn-success pull-right"> Save</button>
                         </div>
 
 

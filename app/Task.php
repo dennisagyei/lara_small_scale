@@ -9,4 +9,5 @@ use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 class Task extends Moloquent
 {
     //
+    protected $fillable = ['name'];
 }

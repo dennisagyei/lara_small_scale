@@ -28,7 +28,7 @@
 
          <!-- DataTables -->
         <link href="/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-
+        <link href="/assets/datatables/dataTables.tableTools.css" rel="stylesheet" type="text/css" />
         <!-- Custom styles for this template -->
         <link href="/css/style.css" rel="stylesheet">
         <link href="/css/helper.css" rel="stylesheet">
@@ -73,7 +73,7 @@
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-building fa-lg" aria-hidden="true"></i> <span class="nav-label">Concessions</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/concessions') }}">All Concession</a></li>
+                            <li><a href="{{ url('/concessions') }}">Concession List</a></li>
                             <li><a href="{{ url('/concessions/new') }}">New Concession</a></li>
                         </ul>
                     </li>
@@ -89,7 +89,9 @@
                             <li><a href="#">Recent Members</a></li>
                             <li><a href="#">Recent Concessions</a></li>
                             <li><a href="#">Overdue Payments</a></li>
-                            <li><a href="#">User Activity</a></li>
+                            @if (Auth::check() and Auth::user()->role=='admin')
+                            <li><a href="{{ url('/reports/useractivity') }}">User Activity</a></li>
+                            @endif
                         </ul>
                     </li>
                     
@@ -101,7 +103,10 @@
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span></a>
                         <ul class="list-unstyled">
+                            
+                            @if (Auth::check() and Auth::user()->role=='admin')
                             <li><a href="{{ url('/users') }}">User Setup</a></li>
+                            @endif
                             <li><a href="{{ url('/user/profile')}}">My Profile</a></li>
 
                         </ul>
@@ -220,9 +225,11 @@
 
         <script src="/js/jquery.app.js"></script>
         <script src="/assets/datatables/jquery.dataTables.min.js"></script>
+        <script src="/assets/datatables/dataTables.tableTools.js"></script>
+        
         <script src="/assets/datatables/dataTables.bootstrap.js"></script>
         <script src="/assets/timepicker/bootstrap-datepicker.js"></script>
-
+        
         <!-- Chat -->
         <script src="/js/jquery.chat.js"></script>
         <!-- Dashboard -->
@@ -243,8 +250,10 @@
             jQuery(document).ready(function($) {
                 $('#Membersdatatable').dataTable();
                 $('#Paymentsdatatable').dataTable();
-
-               
+                $('#useractivityreport').dataTable( {
+                    dom: 'T<"clear">lfrtip'
+                } );
+                           
                 $('.counter').counterUp({
                     delay: 100,
                     time: 1200

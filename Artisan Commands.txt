@@ -6,6 +6,8 @@ composer create-project laravel/laravel quickstart --prefer-dist
 php artisan make:migration create_tasks_table --create=tasks
 php artisan make:migration create_payments_table --create=payments
 php artisan make:migration create_notifications_table --create=notifications
+php artisan make:migration create_tasks_table --create=tasks
+php artisan make:migration create_userlogs_table --create=userlogs
 
 php artisan migrate
 
@@ -14,6 +16,7 @@ php artisan make:model Payment
 php artisan make:model Concession
 php artisan make:model Notification
 php artisan make:model Task
+php artisan make:model Userlog
 
 php artisan make:controller HomeController
 php artisan make:controller AccessController
@@ -22,8 +25,8 @@ php artisan make:controller MemberController
 php artisan make:controller PaymentController
 php artisan make:controller ConcessionController
 php artisan make:controller NotificationController
+php artisan make:controller ReportController
 
-php artisan make:migration create_tasks_table --create=tasks
 -------------------------------------------------------------------------------------------------------------------------
 
 Route::get('greeting', function () {
@@ -77,6 +80,24 @@ class User extends Moloquent
 	
 }
 
+
+--------------------------------Laravel Task Schedule----------------------------
+setup in crontab [ call the Laravel command scheduler every minute]
+* * * * * php /path/to/artisan schedule:run >> /dev/null 2>&1
+Eg. * * * * * /home/ubuntu/workspace/artisan schedule:run >> /dev/null 2>&1
+
+define all of your scheduled tasks in the schedule method of the App\Console\Kernel class
+
+--Creating a Custom Artisan Command-
+$ php artisan make:console SendSMS --command=sms:send
+$ php artisan make:console ExpiryNotification --command=notify:expiry
+
+--add to kernel
+$schedule
+    ->command('notify:expiry')
+    ->daily()
+    ->sendOutputTo($logPath)
+    ->emailOutputTo('dennisagyei@gmail.com');
 
 -----------------------MyTxtBox API-----------------------------------------------
 Client Id   :   jphgfwqa

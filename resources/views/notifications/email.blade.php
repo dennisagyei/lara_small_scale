@@ -18,7 +18,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <table id="Smsdatatable" class="table table-striped table-bordered">
+                                <table id="Membersdatatable" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Entry Date</th>

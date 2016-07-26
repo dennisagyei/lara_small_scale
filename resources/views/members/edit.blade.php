@@ -146,7 +146,7 @@
 
                         <div class="pull-right">
                             <a href="{{ url('/members') }}" class="btn btn-inverse">Cancel</a>
-                            <button type="submit" class="btn btn-inverse">Save</button> 
+                            <button type="submit" class="btn btn-success">Save</button> 
                         </div>
                     </form>
                 </div>

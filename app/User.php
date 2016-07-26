@@ -36,5 +36,9 @@ class User extends Moloquent implements AuthenticatableContract, CanResetPasswor
     //public $timestamps = false;
 
    // protected $dateFormat = 'U';
+   public function userlogs()
+    {
+    	return $this->hasMany('App\Userlog');
+    }
   
 }

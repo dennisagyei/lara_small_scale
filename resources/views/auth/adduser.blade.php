@@ -42,6 +42,14 @@
                                     </div>
                                     
                                     <div class="form-group">
+                                        <label for="InputRole">Role</label>
+                                        <select id="InputRole" class="form-control" name="role" >
+                                            <option>default</option>
+                                            <option>admin</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
                                         <label for="InputPhone">Phone</label>
                                         <input type="phone" class="form-control" id="InputPhone" name="phone" placeholder="Enter phone no" required>
                                     </div>
@@ -51,7 +59,8 @@
                                         <input type="password" class="form-control" name="password" id="InputPassword" placeholder="Password" required>
                                     </div>
                                     
-                                    <button type="submit" class="btn btn-inverse pull-right">Save</button>
+                                    <a href="{{ url('/users') }}" class="btn btn-inverse pull-left">Cancel</a>
+                                    <button type="submit" class="btn btn-success pull-right">Save</button>
                                 </form>
 				</div>
 			</div>

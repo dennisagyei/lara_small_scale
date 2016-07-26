@@ -53,6 +53,7 @@ class ConcessionController extends Controller
     	$concession->status=$request->status;
     	$concession->owner_type=$request->owner_type;
     	$concession->map_coords=$request->map_coords;
+    	$concession->user_id = Auth::user()->_id;
     	//$member->user_id=Auth::id();
 
     	$concession->save();

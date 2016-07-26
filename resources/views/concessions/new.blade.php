@@ -88,7 +88,7 @@ New Concession
                             <input type="hidden" name="map_coords" id="map-coords" value=""/>
 
                      <div>
-                        <a href="{{ url('/payments') }}" class="btn btn-inverse pull-left"> Cancel</a>
+                        <a href="{{ url('/concessions') }}" class="btn btn-inverse pull-left"> Cancel</a>
                         <button type="submit"  class="btn btn-success pull-right"> Save</button>
                     </div>
                 </form>

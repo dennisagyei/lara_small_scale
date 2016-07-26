@@ -52,7 +52,7 @@ class PaymentController extends Controller
     	$Payment->paydate=$request->paydate;
     	$Payment->comments=$request->comments;
     	$Payment->member_id=$request->member_id;
-    	//$Payment->user_id=Auth::id();
+    	$Payment->user_id = Auth::user()->_id;
 
     	$Payment->save();
 		

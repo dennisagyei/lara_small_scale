@@ -90,3 +90,6 @@ Route::get('/notifications/email','NotificationController@showEmail');
 Route::get('/notifications/email/send','NotificationController@composeEmail');
 Route::patch('/notifications/email/send','NotificationController@updateEmail');
 Route::post('/notifications/email/send','NotificationController@sendEmail');
+
+//Report routes
+Route::get('/reports/useractivity','ReportController@userlog');

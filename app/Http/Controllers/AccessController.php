@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use App\Userlog;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class AccessController extends Controller
 {
@@ -32,8 +34,15 @@ class AccessController extends Controller
         'password' => 'required',
          ]);
 
-    	if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) 
+    	if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'),'status' => 'Active'])) 
     	{
+    	    //log activity
+    	    $userlog = new Userlog;
+    		$userlog->ip = $_SERVER['REMOTE_ADDR'];
+    		$userlog->machine = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+            $userlog->user_id = Auth::user()->_id;
+    		$userlog->save();
+    		
         	return redirect('/home');
    		} 
    		else 
@@ -64,7 +73,9 @@ class AccessController extends Controller
 		$user->email = $request->email;
 		$user->password = bcrypt($request->password);
 		$user->status='Pending';
-
+		$user->role='default';
+        $user->user_id = Auth::user()->_id;
+        
 		$user->save();
 
     	 return redirect('/auth/login');
@@ -121,7 +132,9 @@ class AccessController extends Controller
 		$user->phone= $request->phone;
 		$user->password = bcrypt($request->password);
 		$user->status='Pending';
-
+        $user->role=$request->role;
+        $user->user_id = Auth::user()->_id;
+        
 		$user->save();
 
     	return redirect('/users');
@@ -141,8 +154,9 @@ class AccessController extends Controller
 		$user->name = $request->name;
 		$user->email = $request->email;
 		$user->phone = $request->phone;
+        $user->role=$request->role;
 		
-		If ($request->password)
+		if ($request->password)
 		{
 		    $user->password = bcrypt($request->password);
 		}
@@ -188,9 +202,38 @@ class AccessController extends Controller
     
         $user = User::find($id);
 		$user->status = 'Active';
-	
+	    
 		$user->save();
+		
+		$recipient=$user->email;
+		$title='User Account Management';
+		$cc_email='dennisgyei@gmail.com';
+		$message= 'Your user account have been activated.'
+		
+			Mail::queue('notifications.template1', ['title' => $title, 'content' => $content], function ($message) 
+	        	use ($recipient,$title,$cc_email)
+	        {
+
+	            $message->from('info@smallscale.com', 'no-reply');
+
+	            $message->to($recipient);
+
+	            $message->cc($cc_email);
+
+	            $message->subject($title);
+
+	        });
 
     	return redirect('/users');
     }
+    
+    function getRealUserIp()
+    {
+      switch(true){
+      case (!empty($_SERVER['HTTP_X_REAL_IP'])) : return $_SERVER['HTTP_X_REAL_IP'];
+      case (!empty($_SERVER['HTTP_CLIENT_IP'])) : return $_SERVER['HTTP_CLIENT_IP'];
+      case (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) : return $_SERVER['HTTP_X_FORWARDED_FOR'];
+      default : return $_SERVER['REMOTE_ADDR'];
+    }
+ }
 }

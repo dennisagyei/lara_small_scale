@@ -60,8 +60,8 @@ class MemberController extends Controller
     	$member->mining_expiry_date=$request->mining_expiry_date;
     	$member->operating_license=$request->operating_license;
     	$member->oper_expiry_date=$request->oper_expiry_date;
-    	//$member->user_id=Auth::id();
-
+    	$member->user_id = Auth::user()->_id;
+    	
     	$member->save();
 		
     	return redirect('/members');

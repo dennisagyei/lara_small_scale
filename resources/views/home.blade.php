@@ -52,10 +52,11 @@
                     <div class="col-lg-4">
 
                         <!-- TODO -->
+                        @if (Auth::check() and Auth::user()->role=='admin')
                         <div class="portlet" id="todo-container"><!-- /primary heading -->
                             <div class="portlet-heading">
                                 <h3 class="portlet-title text-dark text-uppercase">
-                                    Alerts & Actions
+                                    Recent User Accounts
                                 </h3>
                                 <div class="portlet-widgets">
                                     <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
@@ -67,32 +68,40 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div id="portlet-5" class="panel-collapse collapse in">
-                                <div class="portlet-body todoapp">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h4 id="todo-message"><span id="todo-remaining"></span> of <span id="todo-total"></span> remaining</h4> 
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <a href="" class="pull-right btn btn-primary btn-sm" id="btn-archive">Archive</a>
-                                        </div>
+                                <div class="portlet-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Username</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 0;?>
+                                                @foreach($users as $user)
+                                                    <?php $i++; ?>
+                                                <tr>
+                                                    <td> {{ $i }}</td>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->status }}</td>
+                                                    <td> <a href="{{ url('/users/enable/'.$user->_id) }}"> <span class="label label-info">Approve</span> </a></td>
+                                                   
+                                                </tr>
+                                                    
+                                                @endforeach
+                                                
+                                            </tbody>
+                                        </table>
                                     </div>
-
-                                    <ul class="list-group no-margn nicescroll todo-list" style="max-height: 275px;" id="todo-list"></ul>
-
-                                     <form name="todo-form" id="todo-form" role="form" class="m-t-20">
-                                        <div class="row">
-                                            <div class="col-sm-9 todo-inputbar">
-                                                <input type="text" id="todo-input-text" name="todo-input-text" class="form-control" placeholder="Add new todo">
-                                            </div>
-                                            <div class="col-sm-3 todo-send">
-                                                <button class="btn-info btn-block btn" type="button" id="todo-btn-submit">Add</button>
-                                            </div>
-                                        </div>
-                                    </form>
-
+                                    
+                                   
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div> <!-- end col -->
 
                     <div class="col-lg-8">

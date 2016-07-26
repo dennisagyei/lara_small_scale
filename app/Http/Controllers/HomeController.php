@@ -33,9 +33,10 @@ class HomeController extends Controller
         $memberCount=Member::count();
         $concessionCount=Concession::count();
         $Totalpayment=Payment::sum('amount');
-        $members=Member::orderBy('created_at', 'desc')->get();
-        $tasks = Task::orderBy('created_at', 'asc')->get();
+        $members=Member::orderBy('created_at', 'desc')->take(5)->get();
+        $users= User::Where('status','=','Pending')->get();
+        $tasks = Task::orderBy('created_at', 'asc')->take(5)->get();
         
-        return view('home',compact('userCount','memberCount','concessionCount','Totalpayment','members','tasks'));
+        return view('home',compact('userCount','memberCount','concessionCount','Totalpayment','members','tasks','users'));
     }
 }
