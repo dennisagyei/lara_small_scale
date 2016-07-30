@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Member;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -64,7 +65,7 @@ class MemberController extends Controller
     	
     	$member->save();
 		
-    	return redirect('/members');
+    	return redirect('/members')->with('member_msg', 'New member created successfully!');
     }
 
     public function update($id,Request $request)
@@ -93,7 +94,7 @@ class MemberController extends Controller
 
     	$member->save();
 
-    	return redirect('/members');
+    	return redirect('/members')->with('member_msg', 'Member updated successfully!');
 
     }
 
@@ -102,7 +103,7 @@ class MemberController extends Controller
     	$member=Member::find($id);
     	$member->delete();
 
-    	return redirect('/members');
+    	return redirect('/members')->with('member_msg', 'Member deleted!');
 
     }
 

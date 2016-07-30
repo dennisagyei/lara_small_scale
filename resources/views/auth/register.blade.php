@@ -10,7 +10,13 @@
                 <div class="panel-heading"> 
                    <h3 class="text-center m-t-10"> Create a new Account </h3>
                 </div> 
-
+                 @if (session('status_msg'))
+                            <div class="alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                 {{ session('status_msg') }}
+                            </div>
+                 @endif
+                
                 @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

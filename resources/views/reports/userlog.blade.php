@@ -52,7 +52,7 @@
                                                         <td>{{ $log->user->name }}</td>
                                                         <td>{{ $log->created_at }}</td>
                                                         <td>{{ $log->machine }}</td>
-                                                        <td>{{  $log->ip }}</td>
+                                                        <td>{{ $log->ip }}</td>
                                                         
                                                     </tr>
                                                     @endforeach
@@ -66,7 +66,7 @@
                                 <div class="hidden-print">
                                     <div class="pull-right">
                                         <a href="#" class="btn btn-inverse"><i class="fa fa-print"></i></a>
-                                        <a href="#" class="btn btn-primary">Download</a>
+                                        <a href="{{ url('/reports/useractivity/export') }}" class="btn btn-primary">Download</a>
                                     </div>
                                 </div>
                             </div>

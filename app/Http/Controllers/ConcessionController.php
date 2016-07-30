@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Concession;
 use App\Member;
+use Illuminate\Support\Facades\Auth;
 
 class ConcessionController extends Controller
 {
@@ -58,7 +59,7 @@ class ConcessionController extends Controller
 
     	$concession->save();
 		
-    	return redirect('/concessions');
+    	return redirect('/concessions')->with('concession_msg', 'New concession created successfully!');
         
     }
 
@@ -79,7 +80,7 @@ class ConcessionController extends Controller
 
     	$concession->save();
 
-    	return redirect('/concessions');
+    	return redirect('/concessions')->with('concession_msg', 'Concession updated successfully!');;
 
     }
 
@@ -88,7 +89,7 @@ class ConcessionController extends Controller
     	$concession=Concession::find($id);
     	$concession->delete();
 
-    	return redirect('/concessions');
+    	return redirect('/concessions')->with('concession_msg', 'Concession deleted!');
 
     }
 

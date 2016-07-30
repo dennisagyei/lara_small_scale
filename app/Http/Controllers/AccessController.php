@@ -54,12 +54,7 @@ class AccessController extends Controller
 
     public function register(Request $request)
     {
-    	/* User::create([
-                    'name' => Request::get('name'),
-                    'email' => Request::get('email'),
-                    'password' => bcrypt(Request::get('password')),
-        ]);
-        */
+    
 
         $this->validate($request, [
         'name' => 'required|min:3|max:50',
@@ -74,11 +69,12 @@ class AccessController extends Controller
 		$user->password = bcrypt($request->password);
 		$user->status='Pending';
 		$user->role='default';
-        $user->user_id = Auth::user()->_id;
+        
         
 		$user->save();
-
-    	 return redirect('/auth/login');
+        
+        return redirect('/auth/login')->with('status_msg', 'Your account has been created pending approval. Please check your mail!');
+    	
     }
 
     public function showRegister()
@@ -208,9 +204,10 @@ class AccessController extends Controller
 		$recipient=$user->email;
 		$title='User Account Management';
 		$cc_email='dennisgyei@gmail.com';
-		$message= 'Your user account have been activated.'
+		$content= 'Your user account have been Approved. Please click the button below to activate. ';
 		
-			Mail::queue('notifications.template1', ['title' => $title, 'content' => $content], function ($message) 
+		
+			Mail::queue('notifications.accountactivation', ['title' => $title, 'content' => $content], function ($message) 
 	        	use ($recipient,$title,$cc_email)
 	        {
 

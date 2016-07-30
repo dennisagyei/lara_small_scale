@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Payment;
 use App\Member;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -56,7 +57,7 @@ class PaymentController extends Controller
 
     	$Payment->save();
 		
-    	return redirect('/payments');
+    	return redirect('/payments')->with('payment_msg', 'New payment created successfully!');
         
     }
 
@@ -77,7 +78,7 @@ class PaymentController extends Controller
 
     	$Payment->save();
 
-    	return redirect('/payments');
+    	return redirect('/payments')->with('payment_msg', 'Payment updated successfully!');
 
     }
 
@@ -86,7 +87,7 @@ class PaymentController extends Controller
     	$Payment=Payment::find($id);
     	$Payment->delete();
 
-    	return redirect('/payments');
+    	return redirect('/payments')->with('payment_msg', 'Payment deleted!');
 
     }
 

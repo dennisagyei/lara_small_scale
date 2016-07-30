@@ -93,3 +93,4 @@ Route::post('/notifications/email/send','NotificationController@sendEmail');
 
 //Report routes
 Route::get('/reports/useractivity','ReportController@userlog');
+Route::get('/reports/useractivity/export','ReportController@exportlog');

@@ -25,7 +25,10 @@
 
         <!-- sweet alerts -->
         <link href="/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
-
+        
+        <!-- Notifications css -->
+        <link href="/assets/notifications/notification.css" rel="stylesheet" />
+        
          <!-- DataTables -->
         <link href="/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/datatables/dataTables.tableTools.css" rel="stylesheet" type="text/css" />
@@ -222,6 +225,10 @@
         <!-- sweet alerts -->
         <script src="/assets/sweet-alert/sweet-alert.min.js"></script>
         <script src="/assets/sweet-alert/sweet-alert.init.js"></script>
+        
+        <script src="/assets/notifications/notify.min.js"></script>
+        <script src="/assets/notifications/notify-metro.js"></script>
+        <script src="/assets/notifications/notifications.js"></script>
 
         <script src="/js/jquery.app.js"></script>
         <script src="/assets/datatables/jquery.dataTables.min.js"></script>
@@ -247,12 +254,10 @@
         /* ==============================================
              Counter Up
              =============================================== */
-            jQuery(document).ready(function($) {
+            $(document).ready(function() {
                 $('#Membersdatatable').dataTable();
                 $('#Paymentsdatatable').dataTable();
-                $('#useractivityreport').dataTable( {
-                    dom: 'T<"clear">lfrtip'
-                } );
+                $('#useractivityreport').dataTable();
                            
                 $('.counter').counterUp({
                     delay: 100,
