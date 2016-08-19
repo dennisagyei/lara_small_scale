@@ -953,7 +953,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <p>&copy;2016 INNOVA GHANA</p>
+              <p>&copy;2016 DIGITAL INNOVA</p>
             </div>
             <div class="col-md-6">
               <p></p>

@@ -24,7 +24,14 @@ class PaymentController extends Controller
 
     	return view('payments.index',compact('payments'));
     }
+    
+    public function mypayments()
+    {
+    	$payments=Payment::all();
 
+    	return view('payments.index',compact('payments'));
+    }
+    
     public function edit($id)
     {
     	$payment=Payment::find($id);
@@ -33,6 +40,7 @@ class PaymentController extends Controller
 
     	return view('payments.edit',compact('payment','members'));
     }
+    
 
     public function store(Request $request)
     {

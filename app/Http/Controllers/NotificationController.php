@@ -77,11 +77,12 @@ class NotificationController extends Controller
 
 	            $message->to($recipient);
 
-	            $message->cc($cc_email);
+	           // $message->cc($cc_email);
 
 	            $message->subject($title);
 
 	        });
+	        
 		
 		}
 

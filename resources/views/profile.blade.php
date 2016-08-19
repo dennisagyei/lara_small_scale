@@ -1,5 +1,8 @@
-@extends('layouts.master')
-
+@if (Auth::check() and Auth::user()->role=='Member')
+    @extends('layouts.member')
+@else
+    @extends('layouts.master')
+@endif
 
 @section('title', 'User Profile')
 

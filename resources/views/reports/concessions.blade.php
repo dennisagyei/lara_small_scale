@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 
-@section('title', 'User Activity Log Report')
+@section('title', 'Concession Report')
 
 @section('content')
 <div class="wraper container-fluid">
@@ -19,7 +19,7 @@
                             <div class="panel-body">
                                 <div class="clearfix">
                                     <div class="pull-left">
-                                        <h1 class="text-right">User Activity Report</h1>
+                                        <h1 class="text-right">Concession Report</h1>
                                         
                                     </div>
                                     <div class="pull-right">
@@ -34,26 +34,28 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="table-responsive">
-                                            <table id="useractivityreport" class="table m-t-30">
+                                            <table id="" class="table m-t-30">
                                                 <thead>
                                                     <tr><th>#</th>
-                                                    <th>User Name</th>
-                                                    <th>Login Date</th>
-                                                    <th>Machine</th>
-                                                    <th>IP</th>
-                                                    
+                                                    <th>Company</th>
+                                                    <th>size</th>
+                                                    <th>Location</th>
+                                                    <th>Zone</th>
+                                                    <th>Status</th>
+                                                    <th>Ownership Type</th>
                                                 </tr></thead>
                                                 <tbody>
                                                     <?php $i = 0;?>
-                                                    @foreach($userlogs as $log)
+                                                    @foreach($concessions as $report)
                                                      <?php $i++; ?>
                                                     <tr>
                                                         <td>{{ $i }}</td>
-                                                        <td>{{ $log->user->name }}</td>
-                                                        <td>{{ $log->created_at }}</td>
-                                                        <td>{{ $log->machine }}</td>
-                                                        <td>{{ $log->ip }}</td>
-                                                        
+                                                        <td>{{ $report->member->company }}</td>
+                                                        <td>{{ $report->size }}</td>
+                                                        <td>{{ $report->location }}</td>
+                                                        <td>{{ $report->zone }}</td>
+                                                        <td>{{ $report->status }}</td>
+                                                        <td>{{ $report->owner_type }}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
@@ -66,7 +68,7 @@
                                 <div class="hidden-print">
                                     <div class="pull-right">
                                         <a id="print-preview" class="btn btn-inverse" onclick="window.print()"><i class="fa fa-print"></i></a>
-                                        <a href="{{ url('/reports/useractivity/export') }}" class="btn btn-primary">Download</a>
+                                        <a href="{{ url('/reports/concessionlist/export') }}" class="btn btn-primary">Download</a>
                                     </div>
                                 </div>
                             </div>
@@ -77,8 +79,4 @@
                 </div>
 
 </div>
-@endsection
-
-@section('jquery')
-
 @endsection

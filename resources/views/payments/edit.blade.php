@@ -67,6 +67,7 @@ Edit Payment
                                 <option  {{ $payment->payment_methods == 'Cash' ? 'selected' : '' }}>Cash</option>
                                 <option  {{ $payment->payment_methods == 'Cheque' ? 'selected' : '' }}>Cheque</option>
                                 <option  {{ $payment->payment_methods == 'Bank Transfer' ? 'selected' : '' }}>Bank Transfer</option>
+                                <option  {{ $payment->payment_methods == 'Mobile Money' ? 'selected' : '' }}>Mobile Money</option>
                                 <option  {{ $payment->payment_methods == 'Other' ? 'selected' : '' }}>Other</option>
                             </select>
                     </div>

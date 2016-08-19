@@ -118,4 +118,7 @@ git init
 git add --all
 git commit -m 'Initial commit'
 git remote add origin ssh://578662eb0c1e66349c0000e3@smallscale-innovagh.rhcloud.com/~/git/smallscale.git/
-git push -uf origin maste
+git push -uf origin master
+
+
+$member->user->district

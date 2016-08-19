@@ -71,46 +71,26 @@
                     <li class="active"><a href="{{ url('/home') }}"><i class="fa fa-home" aria-hidden="true"></i></i> <span class="nav-label">Home</span></a></li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-users"></i> <span class="nav-label">Membership</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/members') }}">Member List</a></li>
-                            <li><a href="{{ url('/members/new') }}">New Membership</a></li>
+                            <li><a href="{{ url('/members/mydetails/') }}">My Details</a></li>
+                            
                         </ul>
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-building fa-lg" aria-hidden="true"></i> <span class="nav-label">Concessions</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/concessions') }}">Concession List</a></li>
-                            <li><a href="{{ url('/concessions/new') }}">New Concession</a></li>
+                            <li><a href="{{ url('/concessions/myconcesions/') }}">My Concessions </a></li>
+                            
                         </ul>
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Levies/Dues</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/payments') }}">Payments List</a></li>
-                            <li><a href="{{ url('/payments/new') }}">Add Payments</a></li>
-                            <li><a href="#">Invoices</a></li>
+                            <li><a href="{{ url('/payments/mypayments/') }}">My Payments</a></li>
+                            
                         </ul>
                     </li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <span class="nav-label">Reports</span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="{{ url('/reports/memberlist') }}">Recent Members</a></li>
-                            <li><a href="{{ url('/reports/concessionlist') }}">Recent Concessions</a></li>
-                            <li><a href="{{ url('/reports/paymentlist') }}">Overdue Payments</a></li>
-                            @if (Auth::check() and Auth::user()->role=='admin')
-                            <li><a href="{{ url('/reports/useractivity') }}">User Activity</a></li>
-                            @endif
-                        </ul>
-                    </li>
-                    
-                    <li class="has-submenu"><a href="#"><i class="fa fa-bell"></i> <span class="nav-label">Notification</span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="{{ url('/notifications/email')}}"> Email</a></li>
-                            <li><a href="{{ url('/notifications/sms')}}"> SMS</a></li>
-                        </ul>
-                    </li>
+                   
                     <li class="has-submenu"><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span></a>
                         <ul class="list-unstyled">
                             
-                            @if (Auth::check() and strstr(Auth::user()->role,'Admin')=='Admin')
-                            <li><a href="{{ url('/users') }}">User Setup</a></li>
-                            @endif
                             <li><a href="{{ url('/user/profile')}}">My Profile</a></li>
 
                         </ul>

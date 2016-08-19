@@ -69,7 +69,7 @@ New Concession
                             </div>
 
                             <div class="form-group input-group">
-                                <span class="input-group-addon">Owner Type</span>
+                                <span class="input-group-addon">Management Type</span>
                                 <select class="form-control" name="owner_type" >
                                     <option>Foreign</option>
                                     <option>Local</option>

@@ -41,13 +41,25 @@
                                         <input type="email" class="form-control" id="InputEmail" name="email" placeholder="Enter email" required>
                                     </div>
                                     
-                                    <div class="form-group">
-                                        <label for="InputRole">Role</label>
-                                        <select id="InputRole" class="form-control" name="role" >
-                                            <option>default</option>
-                                            <option>admin</option>
-                                        </select>
-                                    </div>
+                                     <div class="form-group">
+                                         
+                                            <label for="InputRole">Role</label>
+                                            <select id="InputRole" class="form-control" name="role" >
+                                                <option>Member</option>
+                                                <option>Head Quarters Admin</option>
+                                                <option>Tarkwa Admin</option>
+                                                <option>Bolga Admin</option>
+                                                <option>Wa Admin</option>
+                                                <option>Bibiani Admin</option>
+                                                <option>Dunkwa Admin</option>
+                                                <option>Konongo Admin</option>
+                                                <option>Assin Fosu Admin</option>
+                                                <option>Akyem Oda Admin</option>
+                                                <option>Asankragwa Admin</option>
+                                            </select>
+                                      </div>
+                                        
+                                        
                                     
                                     <div class="form-group">
                                         <label for="InputPhone">Phone</label>

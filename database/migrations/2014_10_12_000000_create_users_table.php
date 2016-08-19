@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $collection->string('email')->unique();
             $collection->string('password');
             $collection->string('active');
+            $collection->string('district');
             $collection->rememberToken();
         });
     }

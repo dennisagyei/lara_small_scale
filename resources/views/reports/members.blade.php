@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 
-@section('title', 'User Activity Log Report')
+@section('title', 'New Members Report')
 
 @section('content')
 <div class="wraper container-fluid">
@@ -19,7 +19,7 @@
                             <div class="panel-body">
                                 <div class="clearfix">
                                     <div class="pull-left">
-                                        <h1 class="text-right">User Activity Report</h1>
+                                        <h1 class="text-right">New Members Report</h1>
                                         
                                     </div>
                                     <div class="pull-right">
@@ -34,26 +34,30 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="table-responsive">
-                                            <table id="useractivityreport" class="table m-t-30">
+                                            <table id="" class="table m-t-30">
                                                 <thead>
                                                     <tr><th>#</th>
-                                                    <th>User Name</th>
-                                                    <th>Login Date</th>
-                                                    <th>Machine</th>
-                                                    <th>IP</th>
-                                                    
+                                                    <th>Company</th>
+                                                    <th>Reg.No</th>
+                                                    <th>Contact</th>
+                                                    <th>Contact Phone</th>
+                                                    <th>District</th>
+                                                    <th>Reg. Date</th>
+                                                    <th>Status</th>
                                                 </tr></thead>
                                                 <tbody>
                                                     <?php $i = 0;?>
-                                                    @foreach($userlogs as $log)
+                                                    @foreach($members as $member)
                                                      <?php $i++; ?>
                                                     <tr>
                                                         <td>{{ $i }}</td>
-                                                        <td>{{ $log->user->name }}</td>
-                                                        <td>{{ $log->created_at }}</td>
-                                                        <td>{{ $log->machine }}</td>
-                                                        <td>{{ $log->ip }}</td>
-                                                        
+                                                        <td>{{ $member->company }}</td>
+                                                        <td>{{ $member->registration_no }}</td>
+                                                        <td>{{ $member->contact_person }}</td>
+                                                        <td>{{ $member->contact_phone }}</td>
+                                                        <td>{{ $member->district }}</td>
+                                                        <td>{{ substr($member->registration_date,0,10) }}</td>
+                                                        <td>{{ $member->member_status }}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
@@ -66,7 +70,7 @@
                                 <div class="hidden-print">
                                     <div class="pull-right">
                                         <a id="print-preview" class="btn btn-inverse" onclick="window.print()"><i class="fa fa-print"></i></a>
-                                        <a href="{{ url('/reports/useractivity/export') }}" class="btn btn-primary">Download</a>
+                                        <a href="{{ url('/reports/memberlist/export') }}" class="btn btn-primary">Download</a>
                                     </div>
                                 </div>
                             </div>
@@ -77,8 +81,4 @@
                 </div>
 
 </div>
-@endsection
-
-@section('jquery')
-
 @endsection

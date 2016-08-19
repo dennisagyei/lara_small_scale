@@ -71,7 +71,7 @@ Edit Concession
                             </div>
 
                             <div class="form-group input-group">
-                                <span class="input-group-addon">Owner Type</span>
+                                <span class="input-group-addon">Management Type</span>
                                 <select class="form-control" name="owner_type" >
                                     <option {{ $concession->owner_type == 'Foreign' ? 'selected' : '' }}>Foreign</option>
                                     <option {{ $concession->owner_type == 'Local' ? 'selected' : '' }}>Local</option>

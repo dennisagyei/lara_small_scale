@@ -15,7 +15,12 @@ class ConcessionController extends Controller
     public function index()
     {
     	$concessions=Concession::all();
-
+    	return view('concessions.index',compact('concessions'));
+    }
+    
+    public function myconcessions()
+    {
+    	$concessions=Concession::all();
     	return view('concessions.index',compact('concessions'));
     }
 
@@ -34,17 +39,7 @@ class ConcessionController extends Controller
     public function store(Request $request)
     {
     	
-        /*
-        return $request->all();
-    	
-        $this->validate($request, [
-        'company' => 'required',
-        'registration_no' => 'required',
-        'contact_person' => 'required',
-        'contact_phone' => 'required',
-        'email' => 'email',
-   		 ]);
-        */
+     
     	$concession=new Concession;
 
     	$concession->member_id=$request->member_id;
@@ -55,7 +50,7 @@ class ConcessionController extends Controller
     	$concession->owner_type=$request->owner_type;
     	$concession->map_coords=$request->map_coords;
     	$concession->user_id = Auth::user()->_id;
-    	//$member->user_id=Auth::id();
+    	
 
     	$concession->save();
 		

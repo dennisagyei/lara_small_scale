@@ -56,6 +56,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/members', 'MemberController@index');
 Route::get('/members/new', 'MemberController@newMember');
 Route::get('/members/{id}', 'MemberController@show');
+Route::get('/members/mydetails/{id}', 'MemberController@mydetails');
 Route::get('/members/{id}/edit', 'MemberController@edit');
 Route::patch('/members/{id}/update', 'MemberController@update');
 Route::get('/members/confirm/{id}', 'MemberController@confirm');
@@ -66,6 +67,7 @@ Route::get('/payments','PaymentController@index');
 Route::get('/payments/new', 'PaymentController@newPayment');
 Route::get('/payments/{id}', 'PaymentController@show');
 Route::get('/payments/{id}/edit', 'PaymentController@edit');
+Route::get('/payments/mypayments/{id}', 'PaymentController@mypayments');
 Route::patch('/payments/{id}/update', 'PaymentController@update');
 Route::get('/payments/confirm/{id}', 'PaymentController@confirm');
 Route::get('/payments/destroy/{id}', 'PaymentController@destroy');
@@ -74,6 +76,7 @@ Route::post('/payments/save', 'PaymentController@store');
 Route::get('/concessions','ConcessionController@index');
 Route::get('/concessions/new', 'ConcessionController@show');
 Route::get('/concessions/{id}/edit', 'ConcessionController@edit');
+Route::get('/concessions/myconcessions/{id}', 'ConcessionController@myconcessions');
 Route::patch('/concessions/{id}/update', 'ConcessionController@update');
 Route::get('/concessions/confirm/{id}', 'ConcessionController@confirm');
 Route::get('/concessions/destroy/{id}', 'ConcessionController@destroy');
@@ -94,3 +97,12 @@ Route::post('/notifications/email/send','NotificationController@sendEmail');
 //Report routes
 Route::get('/reports/useractivity','ReportController@userlog');
 Route::get('/reports/useractivity/export','ReportController@exportlog');
+
+Route::get('/reports/memberlist','ReportController@memberlist');
+Route::get('/reports/memberlist/export','ReportController@export_memberlist');
+
+Route::get('/reports/concessionlist','ReportController@concessionlist');
+Route::get('/reports/concessionlist/export','ReportController@export_concessionlist');
+
+Route::get('/reports/paymentlist','ReportController@paymentlist');
+Route::get('/reports/paymentlist/export','ReportController@export_paymentlist');

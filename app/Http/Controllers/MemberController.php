@@ -20,8 +20,8 @@ class MemberController extends Controller
 
     public function index()
     {
-    	$members=Member::all();
-
+    	$members=Member::all();	
+    	
     	return view('members.index',compact('members'));
     }
 
@@ -31,7 +31,14 @@ class MemberController extends Controller
 
     	return view('members.edit',compact('member'));
     }
+     
+    public function mydetails($id)
+    {
+    	$member=Member::find($id);
 
+    	return view('members.edit',compact('member'));
+    }
+    
     public function store(Request $request)
     {
     	//return $request->all();

@@ -41,12 +41,23 @@
                                         <input type="email" class="form-control" id="InputEmail" name="email" placeholder="Enter email" value="{{ $user->email }}" required>
                                     </div>
                                     
+                                    
                                     <div class="form-group">
-                                        <label for="InputRole">Role</label>
-                                        <select id="InputRole" class="form-control" name="role" >
-                                            <option {{ $user->role == 'default' ? 'selected' : '' }}>default</option>
-                                            <option {{ $user->role == 'admin' ? 'selected' : '' }}>admin</option>
+                                            <label for="InputRole">Role</label>
+                                            <select id="InputRole" class="form-control" name="role" >
+                                            <option {{ $user->role == 'Member' ? 'selected' : '' }}>Member</option>
+                                            <option {{ $user->role == 'Head Quarters Admin' ? 'selected' : '' }}>Head Quarters Admin</option>
+                                            <option {{ $user->role == 'Tarkwa Admin' ? 'selected' : '' }}>Tarkwa Admin</option>
+                                            <option {{ $user->role == 'Bolga Admin' ? 'selected' : '' }}>Bolga Admin</option>
+                                            <option {{ $user->role == 'Wa Admin' ? 'selected' : '' }}>Wa Admin</option>
+                                            <option {{ $user->role == 'Bibiani Admin' ? 'selected' : '' }}>Bibiani Admin</option>
+                                            <option {{ $user->role == 'Dunkwa Admin' ? 'selected' : '' }}>Dunkwa Admin</option>
+                                            <option {{ $user->role == 'Konongo Admin' ? 'selected' : '' }}>Konongo Admin</option>
+                                            <option {{ $user->role == 'Assin Fosu Admin' ? 'selected' : '' }}>Assin Fosu Admin</option>
+                                            <option {{ $user->role == 'Akyem Oda Admin' ? 'selected' : '' }}>Akyem Oda Admin</option>
+                                            <option {{ $user->role == 'Asankragwa Admin' ? 'selected' : '' }}>Asankragwa Admin</option>
                                         </select>
+ 
                                     </div>
                                     
                                     <div class="form-group">

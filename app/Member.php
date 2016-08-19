@@ -23,4 +23,9 @@ class Member extends Moloquent
     {
     	return $this->hasMany('App\Concession');
     }
+    
+   public function user()
+   {
+       return $this->belongsTo('App\User');
+   }
 }

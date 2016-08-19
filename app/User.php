@@ -41,4 +41,17 @@ class User extends Moloquent implements AuthenticatableContract, CanResetPasswor
     	return $this->hasMany('App\Userlog');
     }
   
+   public function members()
+    {
+        return $this->hasMany('App\Member');
+    }
+    public function payments()
+    {
+    	return $this->hasMany('App\Payment');
+    }
+
+    public function concessions()
+    {
+    	return $this->hasMany('App\Concession');
+    }    
 }

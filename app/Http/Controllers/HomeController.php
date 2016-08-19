@@ -9,6 +9,7 @@ use App\Member;
 use App\Concession;
 use App\Payment;
 use App\Task;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -37,6 +38,16 @@ class HomeController extends Controller
         $users= User::Where('status','=','Pending')->get();
         $tasks = Task::orderBy('created_at', 'asc')->take(5)->get();
         
-        return view('home',compact('userCount','memberCount','concessionCount','Totalpayment','members','tasks','users'));
+        
+        
+        if (Auth::check() and Auth::user()->role=='Member')
+        {
+            return view('layouts.member');
+        }
+        else
+        {
+            return view('home',compact('userCount','memberCount','concessionCount','Totalpayment','members','tasks','users'));
+        }
+        
     }
 }

@@ -129,6 +129,7 @@ class AccessController extends Controller
 		$user->password = bcrypt($request->password);
 		$user->status='Pending';
         $user->role=$request->role;
+        $user->district=$request->district;
         $user->user_id = Auth::user()->_id;
         
 		$user->save();
@@ -151,6 +152,7 @@ class AccessController extends Controller
 		$user->email = $request->email;
 		$user->phone = $request->phone;
         $user->role=$request->role;
+		$user->district=$request->district;
 		
 		if ($request->password)
 		{

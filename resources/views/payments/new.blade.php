@@ -64,6 +64,7 @@ New Payment
                                 <option>Cash</option>
                                 <option>Cheque</option>
                                 <option>Bank Transfer</option>
+                                <option>Mobile Money</option>
                                 <option>Other</option>
                             </select>
                     </div>
