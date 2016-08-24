@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Payment;
 use App\Member;
+Use DB;
 use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
@@ -21,21 +22,27 @@ class PaymentController extends Controller
     public function index()
     {
     	$payments=Payment::all();
-
+    	
     	return view('payments.index',compact('payments'));
     }
     
     public function mypayments()
     {
-    	$payments=Payment::all();
+    	$payments=Payment::where('member_id','=',Auth::user()->member_id)->get();
 
-    	return view('payments.index',compact('payments'));
+    	return view('role.member.mypayments',compact('payments'));
     }
     
     public function edit($id)
     {
     	$payment=Payment::find($id);
-        $members=Member::all();
+        
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
 
 
     	return view('payments.edit',compact('payment','members'));
@@ -109,8 +116,13 @@ class PaymentController extends Controller
 
     public function newPayment()
     {
-        $members=Member::all();
-
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
+        
     	return view('payments.new',compact('members'));
     }
 }

@@ -34,36 +34,49 @@
 
                                 	<div class="form-group">
                                         <label for="InputUsername">Name</label>
-                                        <input type="text" class="form-control" id="InputUsername" name="name" placeholder="Enter name" required>
+                                        <input type="text" class="form-control" id="InputUsername" name="name" placeholder="Enter name" value="{{ old('name') }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="InputEmail">Email address</label>
-                                        <input type="email" class="form-control" id="InputEmail" name="email" placeholder="Enter email" required>
+                                        <input type="email" class="form-control" id="InputEmail" name="email" placeholder="Enter email" value="{{ old('email') }}" required>
                                     </div>
                                     
-                                     <div class="form-group">
-                                         
+                                    <div class="form-group">
                                             <label for="InputRole">Role</label>
-                                            <select id="InputRole" class="form-control" name="role" >
+                                            <select id="InputRole" class="form-control" name="role" required>
+                                                <option></option>
                                                 <option>Member</option>
                                                 <option>Head Quarters Admin</option>
-                                                <option>Tarkwa Admin</option>
-                                                <option>Bolga Admin</option>
-                                                <option>Wa Admin</option>
-                                                <option>Bibiani Admin</option>
-                                                <option>Dunkwa Admin</option>
-                                                <option>Konongo Admin</option>
-                                                <option>Assin Fosu Admin</option>
-                                                <option>Akyem Oda Admin</option>
-                                                <option>Asankragwa Admin</option>
+                                                <option>District Admin</option>
                                             </select>
-                                      </div>
-                                        
-                                        
+                                    </div>
+                                    
+                                    <div id="InputDistrictGroup" class="form-group">
+                                            <label for="InputDistrict">Assign District</label>
+                                            <select id="InputDistrict" class="form-control" name="district" required>
+                                                <option>Tarkwa</option>
+                                                <option>Bolga</option>
+                                                <option>Wa</option>
+                                                <option>Bibiani</option>
+                                                <option>Dunkwa</option>
+                                                <option>Konongo</option>
+                                                <option>Assin Fosu</option>
+                                                <option>Akyem Oda</option>
+                                                <option>Asankragwa</option>
+                                            </select>
+                                    </div>
+                                    <div id="InputMemberGroup" class="form-group">
+                                            <label for="InputMember">Assign Company</label>
+                                            <select id="InputMember" class="form-control" name="member_id" >
+                                            @foreach($members as $member)
+                                                <option value="{{ $member->_id }}">{{ $member->company }}</option>
+                                            @endforeach
+                                            </select>
+                                    </div>
                                     
                                     <div class="form-group">
                                         <label for="InputPhone">Phone</label>
-                                        <input type="phone" class="form-control" id="InputPhone" name="phone" placeholder="Enter phone no" required>
+                                        <input type="phone" class="form-control" id="InputPhone" name="phone" placeholder="Enter phone no" value="{{ old('phone') }}" required>
                                     </div>
                                     
                                     <div class="form-group">
@@ -84,4 +97,30 @@
 		</div>		
 	</div>
 </div>
+@endsection
+
+@section('jquery')
+    $("#InputMemberGroup").hide();
+    $("#InputDistrictGroup").hide();
+    
+    $("#InputRole").change(function(){
+      if ($("#InputRole option:selected").text()=='Member')
+      {
+          $("#InputMemberGroup").show();
+          $("#InputDistrictGroup").hide();
+      }
+      else if ($("#InputRole option:selected").text()=='District Admin')
+      {
+          $("#InputDistrictGroup").show();
+          $("#InputMemberGroup").hide();
+      }
+      else
+      {
+          $("#InputDistrictGroup").hide();
+          $("#InputMemberGroup").hide();
+      }
+    
+    
+    });
+
 @endsection

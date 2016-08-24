@@ -44,14 +44,25 @@ class ReportController extends Controller
     
     public function memberlist()
     {
-        $members=Member::all();
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
+        
         return view('reports.members',compact('members'));
         
     }
     
     public function export_memberlist()
     {
-        $members = Member::all();
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
 
         $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
 

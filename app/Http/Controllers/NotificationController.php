@@ -39,14 +39,24 @@ class NotificationController extends Controller
 
     public function composeEmail()
     {
-    	$members=Member::all();
+    	if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
 
     	return view('notifications.compose_email',compact('members'));
     }
 
     public function composeSms()
     {
-    	$members=Member::all();
+    	if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
 
     	return view('notifications.compose_sms',compact('members'));
     }

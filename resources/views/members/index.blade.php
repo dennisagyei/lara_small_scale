@@ -39,7 +39,7 @@
 
                                     <tbody>
                                     @foreach($members as $member)
-                                        @if ($member->user->district==Auth::user()->district)
+                                       
                                         <tr>
                                             <td class="text-center"><i class="fa fa-building fa-lg" aria-hidden="true"></i></td>
                                             <td>{{ $member->company }}</td>
@@ -48,7 +48,7 @@
                                             <td><span class="label label-success">{{ $member->member_status }}</span></td>
                                             <td class="text-center"> <a href="{{ url('/members/'.$member->_id.'/edit') }}" class="btn btn-default btn-sm"><i class="fa fa-list-ul" aria-hidden="true"></i></a> </td>
                                         </tr>
-                                        @endif
+                                        
                                     @endforeach
                                     </tbody>
                                 </table>

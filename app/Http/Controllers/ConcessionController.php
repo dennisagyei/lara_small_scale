@@ -7,27 +7,33 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Concession;
 use App\Member;
+use DB;
 use Illuminate\Support\Facades\Auth;
 
 class ConcessionController extends Controller
 {
-    //
     public function index()
     {
     	$concessions=Concession::all();
+            
     	return view('concessions.index',compact('concessions'));
     }
     
     public function myconcessions()
     {
-    	$concessions=Concession::all();
-    	return view('concessions.index',compact('concessions'));
+    	$concessions=Concession::where('member_id','=',Auth::user()->member_id)->get();
+    	return view('role.member.myconcessions',compact('concessions'));
     }
 
     public function edit($id)
     {
     	$concession=Concession::find($id);
-        $members=Member::all();
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
 
         preg_match_all('/\((.*?)\)/', $concession->map_coords, $matches);
         $coords= $matches[1];
@@ -98,8 +104,13 @@ class ConcessionController extends Controller
 
     public function show()
     {
-        $members=Member::all();
-
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
+        
     	return view('concessions.new',compact('members'));
     }
 }

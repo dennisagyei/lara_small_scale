@@ -47,17 +47,33 @@
                                             <select id="InputRole" class="form-control" name="role" >
                                             <option {{ $user->role == 'Member' ? 'selected' : '' }}>Member</option>
                                             <option {{ $user->role == 'Head Quarters Admin' ? 'selected' : '' }}>Head Quarters Admin</option>
-                                            <option {{ $user->role == 'Tarkwa Admin' ? 'selected' : '' }}>Tarkwa Admin</option>
-                                            <option {{ $user->role == 'Bolga Admin' ? 'selected' : '' }}>Bolga Admin</option>
-                                            <option {{ $user->role == 'Wa Admin' ? 'selected' : '' }}>Wa Admin</option>
-                                            <option {{ $user->role == 'Bibiani Admin' ? 'selected' : '' }}>Bibiani Admin</option>
-                                            <option {{ $user->role == 'Dunkwa Admin' ? 'selected' : '' }}>Dunkwa Admin</option>
-                                            <option {{ $user->role == 'Konongo Admin' ? 'selected' : '' }}>Konongo Admin</option>
-                                            <option {{ $user->role == 'Assin Fosu Admin' ? 'selected' : '' }}>Assin Fosu Admin</option>
-                                            <option {{ $user->role == 'Akyem Oda Admin' ? 'selected' : '' }}>Akyem Oda Admin</option>
-                                            <option {{ $user->role == 'Asankragwa Admin' ? 'selected' : '' }}>Asankragwa Admin</option>
+                                            <option {{ $user->role == 'District Admin' ? 'selected' : '' }}>District Admin</option>
                                         </select>
- 
+                                    </div>
+                                    
+                                    <div id="InputDistrictGroup" class="form-group">
+                                            <label for="InputDistrict">Assign District</label>
+                                            <select id="InputDistrict" class="form-control" name="district" required>
+                                                <option {{ $user->district == 'Tarkwa' ? 'selected' : '' }}>Tarkwa</option>
+                                                <option {{ $user->district == 'Bolga' ? 'selected' : '' }}>Bolga</option>
+                                                <option {{ $user->district == 'Wa' ? 'selected' : '' }}>Wa</option>
+                                                <option {{ $user->district == 'Bibiani' ? 'selected' : '' }}>Bibiani</option>
+                                                <option {{ $user->district == 'Dunkwa' ? 'selected' : '' }}>Dunkwa</option>
+                                                <option {{ $user->district == 'Konongo' ? 'selected' : '' }}>Konongo</option>
+                                                <option {{ $user->district == 'Assin Fosu' ? 'selected' : '' }}>Assin Fosu</option>
+                                                <option {{ $user->district == 'Akyem Oda' ? 'selected' : '' }}>Akyem Oda</option>
+                                                <option {{ $user->district == 'Asankragwa' ? 'selected' : '' }}>Asankragwa</option>
+                                                
+                                            </select>
+                                    </div>
+                                    
+                                     <div id="InputMemberGroup" class="form-group">
+                                            <label for="InputMember">Assign Company</label>
+                                            <select id="InputMember" class="form-control" name="member_id" >
+                                            @foreach($members as $member)
+                                                <option  {{ $user->member_id == $member->_id ? 'selected' : '' }} value="{{ $member->_id }}">{{ $member->company }}</option>
+                                            @endforeach
+                                            </select>
                                     </div>
                                     
                                     <div class="form-group">
@@ -83,4 +99,45 @@
 		</div>		
 	</div>
 </div>
+@endsection
+
+@section('jquery')
+
+
+    if ($("#InputRole option:selected").text()=='Member')
+      {
+          $("#InputMemberGroup").show();
+          $("#InputDistrictGroup").hide();
+      }
+      else if ($("#InputRole option:selected").text()=='District Admin')
+      {
+          $("#InputDistrictGroup").show();
+          $("#InputMemberGroup").hide();
+      }
+      else
+      {
+          $("#InputDistrictGroup").hide();
+          $("#InputMemberGroup").hide();
+      }
+
+
+          
+$("#InputRole").change(function(){
+      if ($("#InputRole option:selected").text()=='Member')
+      {
+          $("#InputMemberGroup").show();
+          $("#InputDistrictGroup").hide();
+      }
+      else if ($("#InputRole option:selected").text()=='District Admin')
+      {
+          $("#InputDistrictGroup").show();
+          $("#InputMemberGroup").hide();
+      }
+      else
+      {
+          $("#InputDistrictGroup").hide();
+          $("#InputMemberGroup").hide();
+      }
+    
+});
 @endsection

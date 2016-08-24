@@ -39,14 +39,27 @@
 
                                     <tbody>
                                     @foreach ($payments as $payment)
-                                        <tr>
+                                        @if (Auth::check() and Auth::user()->role=='District Admin')
+                                            @if ($payment->member->district==Auth::user()->district)
+                                            <tr>
                                             <td class="text-center">{{ substr($payment->paydate,0,10) }}</td>
                                             <td>{{ $payment->member->company }}</td>
                                             <td>Ghs {{ $payment->amount }}</td>
                                             <td>{{ $payment->payment_methods }}</td>
                                             <td>{{ $payment->ref_number }}</td>
                                             <td class="text-center"> <a href="{{ url('/payments/'.$payment->_id.'/edit') }}" class="btn btn-default btn-sm"><i class="fa fa-list-ul" aria-hidden="true"></i></a> </td>
-                                        </tr>
+                                            </tr>
+                                            @endif
+                                        @else
+                                            <tr>
+                                            <td class="text-center">{{ substr($payment->paydate,0,10) }}</td>
+                                            <td>{{ $payment->member->company }}</td>
+                                            <td>Ghs {{ $payment->amount }}</td>
+                                            <td>{{ $payment->payment_methods }}</td>
+                                            <td>{{ $payment->ref_number }}</td>
+                                            <td class="text-center"> <a href="{{ url('/payments/'.$payment->_id.'/edit') }}" class="btn btn-default btn-sm"><i class="fa fa-list-ul" aria-hidden="true"></i></a> </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                         
                                     </tbody>

@@ -34,11 +34,18 @@ class HomeController extends Controller
         $memberCount=Member::count();
         $concessionCount=Concession::count();
         $Totalpayment=Payment::sum('amount');
-        $members=Member::orderBy('created_at', 'desc')->take(5)->get();
+       
         $users= User::Where('status','=','Pending')->get();
         $tasks = Task::orderBy('created_at', 'asc')->take(5)->get();
         
-        
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)
+    	                    ->orderBy('created_at', 'desc')->take(5)
+    	                    ->get();
+        } else {
+            $members=Member::orderBy('created_at', 'desc')->take(5)->get();
+        }
         
         if (Auth::check() and Auth::user()->role=='Member')
         {

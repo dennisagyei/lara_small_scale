@@ -71,19 +71,19 @@
                     <li class="active"><a href="{{ url('/home') }}"><i class="fa fa-home" aria-hidden="true"></i></i> <span class="nav-label">Home</span></a></li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-users"></i> <span class="nav-label">Membership</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/members/mydetails/') }}">My Details</a></li>
+                            <li><a href="{{ url('/members/mydetails/'.Auth::user()->member_id) }}">My Details</a></li>
                             
                         </ul>
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-building fa-lg" aria-hidden="true"></i> <span class="nav-label">Concessions</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/concessions/myconcesions/') }}">My Concessions </a></li>
+                            <li><a href="{{ url('/concessions/myconcessions/'.Auth::user()->member_id) }}">My Concessions </a></li>
                             
                         </ul>
                     </li>
                     <li class="has-submenu"><a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Levies/Dues</span></a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/payments/mypayments/') }}">My Payments</a></li>
+                            <li><a href="{{ url('/payments/mypayments/'.Auth::user()->member_id) }}">My Payments</a></li>
                             
                         </ul>
                     </li>

@@ -81,7 +81,7 @@ New Concession
                                 <span class="input-group-btn">
                                 <button type="button" id="reset" class="btn btn-effect-ripple btn-primary">Click to Reset Map</button>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Left click on the map to create markers, when last marker meets first marker, it create a complete mapping area." readonly>
+                                <input type="file" class="form-control" placeholder="Left click on the map to create markers, when last marker meets first marker, it create a complete mapping area." readonly>
                             </div>
                             
                             <div class="form-group" id="main-map" style="height: 400px;"></div>

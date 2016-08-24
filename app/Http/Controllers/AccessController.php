@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use App\Userlog;
+use App\Member;
 use Illuminate\Support\Facades\Auth;
 use Mail;
 
@@ -85,7 +86,14 @@ class AccessController extends Controller
     public function showUsers()
     {
         
-        $users=User::all();
+        
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $users=User::where('district','=',Auth::user()->district)->get();
+        } else {
+            $users=User::all();
+        }
+        
         
         return view('auth.index',compact('users'));
     }
@@ -95,11 +103,25 @@ class AccessController extends Controller
         if ($request->search)
         {
             $username=$request->search;
-        
-            $users=User::where('name','like','%'.$username.'%')->get();
+            
+            if (Auth::check() and Auth::user()->role=='District Admin')
+            {
+        	    $users=User::where('name','like','%'.$username.'%')
+                        ->where('district','=',Auth::user()->district)
+                        ->get();
+            } else {
+                $users=User::where('name','like','%'.$username.'%')->get();
+            }
+            
+            
         } else
         {
-            $users=User::all();
+            if (Auth::check() and Auth::user()->role=='District Admin')
+            {
+        	    $users=User::where('district','=',Auth::user()->district)->get();
+            } else {
+                $users=User::all();
+            }
         }
         
         
@@ -130,6 +152,8 @@ class AccessController extends Controller
 		$user->status='Pending';
         $user->role=$request->role;
         $user->district=$request->district;
+        $user->member_id=$request->member_id;
+        
         $user->user_id = Auth::user()->_id;
         
 		$user->save();
@@ -153,6 +177,7 @@ class AccessController extends Controller
 		$user->phone = $request->phone;
         $user->role=$request->role;
 		$user->district=$request->district;
+		$user->member_id=$request->member_id;
 		
 		if ($request->password)
 		{
@@ -167,13 +192,15 @@ class AccessController extends Controller
     public function edit($id)
     {
         $user=User::find($id);
+        $members=Member::all();
 
-    	return view('auth.edituser',compact('user'));
+    	return view('auth.edituser',compact('user','members'));
     }
     
     public function addUser()
     {
-        return view('auth.adduser');
+         $members=Member::all();
+        return view('auth.adduser',compact('members'));
     }
     
     public function destroy($id)

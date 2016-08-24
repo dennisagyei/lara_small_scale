@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.member')
 
 
 @section('title', 'User Profile')

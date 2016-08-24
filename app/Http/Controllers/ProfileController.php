@@ -19,7 +19,14 @@ class ProfileController extends Controller
 
     public function show()
     {
-    	return view('profile');
+        if (Auth::check() and Auth::user()->role=='Member')
+        {
+            return view('role.member.profile');
+        }
+        else {
+            return view('profile');
+        }
+    	
     }
 
     public function update(Request $request)
@@ -27,8 +34,6 @@ class ProfileController extends Controller
         if ($request->user()) 
         {
 
-        	//dd($request->user()->_id);
-        	//dd($request);
         	
             $user=User::find($request->user()->_id);
 

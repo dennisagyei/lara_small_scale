@@ -2,11 +2,14 @@
 
 @section('content')
 <div class="wraper container-fluid">
-                <div class="page-title"> 
-                    <h3 class="title"><span id="timer"></span></h3> 
+                <div class="row">
+                    <div class="col-sm-6 page-title"> 
+                        <h3 class="title"><span id="timer"></span></h3> 
+                    </div>
+                     <div class="col-sm-6 page-title"> 
+                        <h3 class="title text-right">District : {{ Auth::check() ? Auth::user()->district : '' }}</h3> 
+                    </div>
                 </div>
-
-
 
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">

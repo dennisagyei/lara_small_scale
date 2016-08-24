@@ -20,7 +20,14 @@ class MemberController extends Controller
 
     public function index()
     {
-    	$members=Member::all();	
+        
+        if (Auth::check() and Auth::user()->role=='District Admin')
+        {
+    	    $members=Member::where('district','=',Auth::user()->district)->get();
+        } else {
+            $members=Member::all();
+        }
+        
     	
     	return view('members.index',compact('members'));
     }
@@ -36,7 +43,7 @@ class MemberController extends Controller
     {
     	$member=Member::find($id);
 
-    	return view('members.edit',compact('member'));
+    	return view('role.member.mydetails',compact('member'));
     }
     
     public function store(Request $request)
@@ -100,8 +107,15 @@ class MemberController extends Controller
     	$member->oper_expiry_date=$request->oper_expiry_date;
 
     	$member->save();
-
-    	return redirect('/members')->with('member_msg', 'Member updated successfully!');
+    	
+    	if (Auth::check() and Auth::user()->role=='Member')
+        {
+            return redirect('/members/mydetails/'.Auth::user()->member_id)->with('member_msg', 'My details updated successfully!');
+        }
+        else
+        {
+    	    return redirect('/members')->with('member_msg', 'Member updated successfully!');
+        }
 
     }
 

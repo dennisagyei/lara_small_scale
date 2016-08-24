@@ -37,13 +37,13 @@
                         <div class="col-md-6">
                             <div class="form-group input-group">
                                 <span class="input-group-addon">Registration no</span>
-                                <input type="text" name="registration_no" class="form-control" value="{{ $member->registration_no}}">
+                                <input type="text" name="registration_no" class="form-control" value="{{ $member->registration_no}}" readonly> 
                             </div>        
                         </div>    
 
                             <div class="form-group input-group">
                                 <span class="input-group-addon">Registration Date</span>
-                                <input type="date" name="registration_date" class="form-control" value="{{ substr($member->registration_date,0,10) }}">
+                                <input type="date" name="registration_date" class="form-control" value="{{ substr($member->registration_date,0,10) }}" readonly>
 
                             </div> 
                         
@@ -64,12 +64,12 @@
 
                         <div class="form-group input-group">
                             <span class="input-group-addon">Address</span>
-                            <textarea class="form-control" rows="5" name="address">{{ $member->address }}</textarea>
+                            <textarea class="form-control" rows="5" name="address" readonly>{{ $member->address }}</textarea >
                         </div> 
 
                         <div class="form-group input-group">
                             <span class="input-group-addon">District</span>
-                            <select class="form-control" name="district">
+                            <select class="form-control" name="district" readonly>
                                 <option  {{ $member->district == 'Tarkwa' ? 'selected' : '' }}>Tarkwa</option>
                                 <option  {{ $member->district == 'Bolga' ? 'selected' : '' }}>Bolga</option>
                                 <option  {{ $member->district == 'Wa' ? 'selected' : '' }}>Wa</option>
@@ -86,13 +86,13 @@
                         <div class="col-md-6">
                             <div class="form-group input-group">
                                 <span class="input-group-addon">Member Type</span>
-                                <input type="text" name="member_type" class="form-control" value="{{ $member->member_type }}">
+                                <input type="text" name="member_type" class="form-control" value="{{ $member->member_type }}" readonly>
                             </div> 
                         </div>         
 
                         <div class="form-group input-group">
                             <span class="input-group-addon">Member Status</span>
-                            <select class="form-control" name="member_status">
+                            <select class="form-control" name="member_status" readonly>
                                 <option  {{ $member->member_status == 'Active' ? 'selected' : '' }}>Active</option>
                                 <option  {{ $member->member_status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                 <option  {{ $member->member_status == 'Suspended' ? 'selected' : '' }}>Suspended</option>
@@ -135,11 +135,11 @@
                             <input type="date" name="oper_expiry_date" class="form-control" value="{{ substr($member->oper_expiry_date,0,10) }}">
                         </div>
 
-                        <a href="{{ url('/members/confirm/'.$member->_id) }}" class="btn btn-danger">Delete</a>
+                       
 
                         <div class="pull-right">
                             <a href="{{ url('/members') }}" class="btn btn-inverse">Cancel</a>
-                            <button type="submit" class="btn btn-success">Save</button> 
+                            <button type="submit" class="btn btn-success">Update</button> 
                         </div>
                     </form>
                 </div>
